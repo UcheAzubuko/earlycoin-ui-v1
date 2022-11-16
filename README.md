@@ -1,4 +1,4 @@
-# earlycoin-ui-v1
+# ec
 
 ## Project setup
 ```
