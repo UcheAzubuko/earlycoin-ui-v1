@@ -1,4 +1,6 @@
-# ec
+# earlycoin-ui-v1
+
+This is the frontend for EarlyCoin, version 1.
 
 ## Project setup
 ```
