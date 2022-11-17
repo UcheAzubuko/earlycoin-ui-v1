@@ -30,10 +30,6 @@ export default Vue.extend({
 			console.log('toggle')
 		}
 	},
-
-	computed: {
-
-	}
 });
 </script>
   
