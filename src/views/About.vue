@@ -1,6 +1,8 @@
 <template>
 	<AuthLayout>
-		<div class="about"></div>
+		<div class="about">
+			<h1>About page is coming soon</h1>
+		</div>
 	</AuthLayout>
 </template>
 
@@ -26,11 +28,17 @@ export default Vue.extend({
 <style lang="scss">
 .about {
 	margin: 0 50px;
+	height: 100vh;
+
+	h1 {
+		text-align: center;
+		color: #ffffff;
+	}
 }
 
 @media only screen and (max-width: 600px) {
 	.about {
-		margin: 0 20x;
+		margin: 0 20px;
 	}
 }
 </style>

@@ -64,12 +64,12 @@ export default Vue.extend({
 });
 </script>
   
-<style lang="scss">
+<style lang="scss" scoped>
 .sidenav {
 	background-color: #9D4AF1;
 	width: 272px;
 	height: 100vh;
-	position: fixed;
+	// position: fixed;
 
 	.logo-wrapper {
 		background-color: #7F69C0;
@@ -161,6 +161,7 @@ export default Vue.extend({
 	.sidenav {
 		display: none;
 	}
+
 }
 </style>
   

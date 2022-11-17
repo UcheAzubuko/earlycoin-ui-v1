@@ -1,15 +1,17 @@
 <template>
 	<div id="auth-wrapper">
 		<SideNav />
-		<TheHeader />
+		<MobileNav v-if="showMobileNav" @closeMobileNav="closeMobileNav" />
+		<TheHeader @toggleSideNav="openMobileNav" />
 		<div class="auth-pages">
 			<slot />
 		</div>
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import SideNav from '@/components/layouts/SideNav.vue'
+import MobileNav from '@/components/layouts/MobileNav.vue'
 import TheHeader from '@/components/layouts/TheHeader.vue'
 
 export default {
@@ -17,14 +19,36 @@ export default {
 	components: {
 		SideNav,
 		TheHeader,
+		MobileNav,
+	},
+
+	data() {
+		return {
+			showMobileNav: false,
+		}
+	},
+
+	methods: {
+		openMobileNav() {
+			this.showMobileNav = true;
+		},
+
+		closeMobileNav() {
+			this.showMobileNav = false;
+		}
 	},
 }
 </script>
 
-<style scss>
+<style lang="scss">
 #auth-wrapper {
 	display: flex;
-	/* background: #121127; */
+	background: #121127;
+
+	@media only screen and (max-width: 1100px) {
+		padding: 0px 0 40px 0;
+		display: block;
+	}
 }
 
 .auth-pages {

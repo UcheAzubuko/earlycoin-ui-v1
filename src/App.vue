@@ -21,7 +21,7 @@ export default Vue.extend({
 $rubik: 'Rubik', sans-serif;
 
 body {
-	background-color: #121127;
+	background: #121127;
 	font-family: Rubik, Helvetica, Arial, sans-serif;
 	color: #ffffff;
 	font-size: 16px;

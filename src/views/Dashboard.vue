@@ -136,12 +136,10 @@ export default Vue.extend({
 			],
 		}
 	},
-
-	computed: {},
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dashboard {
 	margin: 0 50px;
 
@@ -283,6 +281,7 @@ export default Vue.extend({
 		.offers-transactions {
 			.offers-wrapper {
 				.heading {
+					color: #ffffff;
 					display: flex;
 					margin-bottom: 30px;
 					gap: 10px;
@@ -320,6 +319,7 @@ export default Vue.extend({
 						align-items: center;
 						cursor: pointer;
 						text-align: center;
+						color: #ffffff;
 
 						@media only screen and (max-width: 425px) {
 							font-size: 14px;
@@ -363,6 +363,7 @@ export default Vue.extend({
 				}
 
 				.heading {
+					color: #ffffff;
 					display: flex;
 					margin-bottom: 20px;
 					gap: 10px;
