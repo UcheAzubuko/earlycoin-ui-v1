@@ -37,32 +37,33 @@ export default {
 
 	data() {
 		return {
-			email: '',
-			password: '',
-			loading: false,
+			email: '' as string,
+			password: '' as string,
+			loading: false as boolean,
+			isDisabled: false,
 		}
 	},
 
 	computed: {
-		isDisabled(): boolean {
-			return this.email == '' || this.password == ''
-		},
+		// isDisabled(): boolean {
+		// 	return this.email === '' || this.password === ''
+		// },
 	},
 
 	methods: {
 		loginUser() {
 			// validate inputs first
 			console.log('form here')
-			this.loading = true
+			// this.loading = true
 
-			try {
-				setTimeout(() => {
-					this.loading = false
-				}, 3000)
-			} catch (error) {
-				console.log(error)
-				this.loading = false
-			}
+			// try {
+			// 	setTimeout(() => {
+			// 		this.loading = false
+			// 	}, 3000)
+			// } catch (error) {
+			// 	console.log(error)
+			// 	this.loading = false
+			// }
 		},
 	},
 }
