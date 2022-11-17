@@ -92,6 +92,7 @@ export default Vue.extend({
             position: absolute;
             top: 40px;
             left: 40px;
+            cursor: pointer;
         }
 
         &__initials {

@@ -57,6 +57,10 @@ export default Vue.extend({
 
 		span {
 			display: inline-block;
+
+			.menu {
+				cursor: pointer;
+			}
 		}
 	}
 }

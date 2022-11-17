@@ -3,6 +3,7 @@
 		<SideNav />
 		<MobileNav v-if="showMobileNav" @closeMobileNav="closeMobileNav" />
 		<TheHeader @toggleSideNav="openMobileNav" />
+		<CompliancePrompt />
 		<div class="auth-pages">
 			<slot />
 		</div>
@@ -13,6 +14,7 @@
 import SideNav from '@/components/layouts/SideNav.vue'
 import MobileNav from '@/components/layouts/MobileNav.vue'
 import TheHeader from '@/components/layouts/TheHeader.vue'
+import CompliancePrompt from '@/components/general/CompliancePrompt.vue'
 
 export default {
 	name: 'AuthLayout',
@@ -20,6 +22,7 @@ export default {
 		SideNav,
 		TheHeader,
 		MobileNav,
+		CompliancePrompt,
 	},
 
 	data() {
