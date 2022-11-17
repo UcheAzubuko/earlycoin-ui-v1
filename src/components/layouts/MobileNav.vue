@@ -75,7 +75,8 @@ export default Vue.extend({
     background-color: #9D4AF1;
     width: 272px;
     height: 100vh;
-    // position: fixed;
+    position: fixed;
+    z-index: 9999999999999;
 
     .username-wrapper {
         padding: 0 36px;

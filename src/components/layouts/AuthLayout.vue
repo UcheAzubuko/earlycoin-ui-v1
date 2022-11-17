@@ -2,6 +2,7 @@
 	<div id="auth-wrapper">
 		<SideNav />
 		<MobileNav v-if="showMobileNav" @closeMobileNav="closeMobileNav" />
+		<OverlayBackground v-if="showMobileNav" />
 		<TheHeader @toggleSideNav="openMobileNav" />
 		<div class="auth-pages">
 			<slot />
@@ -13,6 +14,7 @@
 import SideNav from '@/components/layouts/SideNav.vue'
 import MobileNav from '@/components/layouts/MobileNav.vue'
 import TheHeader from '@/components/layouts/TheHeader.vue'
+import OverlayBackground from '@/components/general/OverlayBackground.vue'
 
 export default {
 	name: 'AuthLayout',
@@ -20,6 +22,7 @@ export default {
 		SideNav,
 		TheHeader,
 		MobileNav,
+		OverlayBackground,
 	},
 
 	data() {
