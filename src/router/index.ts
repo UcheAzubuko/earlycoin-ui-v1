@@ -1,10 +1,25 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+
+import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
+
 import Dashboard from '../views/Dashboard.vue'
+
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
+	{
+		path: '/login',
+		name: 'login',
+		component: LoginView,
+	},
+	{
+		path: '/register',
+		name: 'register',
+		component: RegisterView,
+	},
   {
     path: '/',
     name: 'dashboard',
@@ -45,9 +60,9 @@ const routes: Array<RouteConfig> = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes,
 })
 
 export default router
