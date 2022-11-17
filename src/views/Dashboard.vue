@@ -1,5 +1,6 @@
 <template>
 	<AuthLayout>
+		<CompliancePrompt />
 		<div class="dashboard">
 			<section class="showcase-wrapper">
 				<!-- Monthly Income Label -->
@@ -78,13 +79,15 @@
 </template>
 
 <script>
-import AuthLayout from '@/components/layouts/AuthLayout.vue'
 import Vue from 'vue'
+import AuthLayout from '@/components/layouts/AuthLayout.vue'
+import CompliancePrompt from '@/components/general/CompliancePrompt.vue'
 
 export default Vue.extend({
 	name: 'DashBoard',
 	components: {
 		AuthLayout,
+		CompliancePrompt,
 	},
 	data: function () {
 		return {

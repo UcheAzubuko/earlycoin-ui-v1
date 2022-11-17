@@ -46,13 +46,13 @@ export default Vue.extend({
 	}
 
 	>div {
-		padding: 40px 50px 48px 50px;
+		padding: 40px 50px 30px 50px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 
 		@media only screen and (max-width: 600px) {
-			padding: 40px 30px 48px 30px;
+			padding: 40px 30px 30px 30px;
 		}
 
 		span {
