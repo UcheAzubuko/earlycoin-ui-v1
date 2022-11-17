@@ -31,6 +31,7 @@ export default Vue.extend({
     border-radius: 4px;
     color: #ffffff;
     margin: 0 50px 30px 50px;
+    cursor: pointer;
 
     @media only screen and (max-width: 600px) {
         font-size: 12px;
