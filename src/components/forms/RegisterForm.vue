@@ -56,20 +56,21 @@ export default {
 			phoneNumber: '',
 			password: '',
 			agreedToTerms: false,
+			isDisabled: false,
 		}
 	},
 
 	computed: {
-		isDisabled(): boolean {
-			return (
-				this.name == '' ||
-				this.email == '' ||
-				this.dob == '' ||
-				this.phoneNumber == '' ||
-				this.password == '' ||
-				this.agreedToTerms == false
-			)
-		},
+		// isDisabled(): boolean {
+		// 	return (
+		// 		this.name == '' ||
+		// 		this.email == '' ||
+		// 		this.dob == '' ||
+		// 		this.phoneNumber == '' ||
+		// 		this.password == '' ||
+		// 		this.agreedToTerms == false
+		// 	)
+		// },
 	},
 
 	methods: {

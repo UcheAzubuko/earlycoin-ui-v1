@@ -1,86 +1,91 @@
 <template>
-	<div class="dashboard">
-		<section class="showcase-wrapper">
-			<!-- Monthly Income Label -->
-			<div class="monthly-income-card">
-				<div class="arrow-icon-wrapper">
-					<img class="arrow-icon" src="@/assets/icons/arrow_circle_up_left.svg" alt="" />
+	<AuthLayout>
+		<div class="dashboard">
+			<section class="showcase-wrapper">
+				<!-- Monthly Income Label -->
+				<div class="monthly-income-card">
+					<div class="arrow-icon-wrapper">
+						<img class="arrow-icon" src="@/assets/icons/arrow_circle_up_left.svg" alt="" />
+					</div>
+					<div>
+						<span>Monthly Income</span>
+						<span>N200000</span>
+					</div>
 				</div>
-				<div>
-					<span>Monthly Income</span>
-					<span>N200000</span>
+				<!-- EarlyCoin Balance -->
+				<div class="ec-balance-wrapper">
+					<div>
+						<span>EarlyCoin Balance</span>
+						<img class="eye" src="@/assets/icons/eye.svg" alt="" />
+					</div>
+					<span>N600000</span>
 				</div>
-			</div>
-			<!-- EarlyCoin Balance -->
-			<div class="ec-balance-wrapper">
-				<div>
-					<span>EarlyCoin Balance</span>
-					<img class="eye" src="@/assets/icons/eye.svg" alt="" />
-				</div>
-				<span>N600000</span>
-			</div>
-		</section>
+			</section>
 
-		<section class="offers-transactions-request">
-			<section class="offers-transactions">
-				<!-- Offers List -->
-				<section class="offers-wrapper">
-					<div class="heading">
-						<img class="lock" src="@/assets/icons/time_lock.svg" alt="" />
-						<h2>
-							Offers <span><em>(Amazing Offers)</em></span>
-						</h2>
-					</div>
-					<div class="offer-list">
-						<div class="offer-item" v-for="offer in offers" :key="offer.id">
-							<div class="offer-icon-box">
-								<img :src="offer.icon" :alt="offer.name" />
-							</div>
-							<p class="offer-name">
-								{{ offer.name }}
-							</p>
+			<section class="offers-transactions-request">
+				<section class="offers-transactions">
+					<!-- Offers List -->
+					<section class="offers-wrapper">
+						<div class="heading">
+							<img class="lock" src="@/assets/icons/time_lock.svg" alt="" />
+							<h2>
+								Offers <span><em>(Amazing Offers)</em></span>
+							</h2>
 						</div>
-					</div>
+						<div class="offer-list">
+							<div class="offer-item" v-for="offer in offers" :key="offer.id">
+								<div class="offer-icon-box">
+									<img :src="offer.icon" :alt="offer.name" />
+								</div>
+								<p class="offer-name">
+									{{ offer.name }}
+								</p>
+							</div>
+						</div>
+					</section>
+					<!-- Transactions List -->
+					<section class="transactions-wrapper">
+						<div class="heading">
+							<h2>Last Transactions</h2>
+							<span>See all</span>
+						</div>
+						<div class="transactions-list">
+							<div class="transactions-item" v-for="transaction in transactions" :key="transaction.id">
+								<div>
+									<p class="transaction-date">
+										{{ transaction.date }}
+									</p>
+									<p class="transaction-date">
+										{{ transaction.time }}
+									</p>
+								</div>
+								<p class="transaction-amount">N{{ transaction.amount }}</p>
+							</div>
+						</div>
+					</section>
 				</section>
-				<!-- Transactions List -->
-				<section class="transactions-wrapper">
-					<div class="heading">
-						<h2>Last Transactions</h2>
-						<span>See all</span>
-					</div>
-					<div class="transactions-list">
-						<div class="transactions-item" v-for="transaction in transactions" :key="transaction.id">
-							<div>
-								<p class="transaction-date">
-									{{ transaction.date }}
-								</p>
-								<p class="transaction-date">
-									{{ transaction.time }}
-								</p>
-							</div>
-							<p class="transaction-amount">N{{ transaction.amount }}</p>
-						</div>
+				<!-- Request for Salary -->
+				<section class="request-wrapper">
+					<img class="wallet" src="@/assets/icons/wallet.svg" alt="wallet" />
+					<h1>Request for Salary</h1>
+					<div class="arrow-icon">
+						<img class="arrow" src="@/assets/icons/right_arrow.svg" alt="arrow" />
 					</div>
 				</section>
 			</section>
-			<!-- Request for Salary -->
-			<section class="request-wrapper">
-				<img class="wallet" src="@/assets/icons/wallet.svg" alt="wallet" />
-				<h1>Request for Salary</h1>
-				<div class="arrow-icon">
-					<img class="arrow" src="@/assets/icons/right_arrow.svg" alt="arrow" />
-				</div>
-			</section>
-		</section>
-	</div>
+		</div>
+	</AuthLayout>
 </template>
 
 <script>
-import Vue from "vue";
+import AuthLayout from '@/components/layouts/AuthLayout.vue'
+import Vue from 'vue'
 
 export default Vue.extend({
-	name: "DashBoard",
-	components: {},
+	name: 'DashBoard',
+	components: {
+		AuthLayout,
+	},
 	data: function () {
 		return {
 			offers: [
@@ -102,38 +107,38 @@ export default Vue.extend({
 				},
 			],
 			dateFormat: {
-				weekday: "long",
-				year: "numeric",
-				month: "short",
-				day: "numeric",
-				hour: "2-digit",
-				minute: "2-digit",
+				weekday: 'long',
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric',
+				hour: '2-digit',
+				minute: '2-digit',
 			},
 			transactions: [
 				{
-					id: "1",
-					amount: "200000",
-					time: new Date().toLocaleTimeString("en-us", this.dateFormat),
-					date: new Date().toLocaleDateString("en-us", this.dateFormat),
+					id: '1',
+					amount: '200000',
+					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+					date: new Date().toLocaleDateString('en-us', this.dateFormat),
 				},
 				{
-					id: "2",
-					amount: "200000",
-					time: new Date().toLocaleTimeString("en-us", this.dateFormat),
-					date: new Date().toLocaleDateString("en-us", this.dateFormat),
+					id: '2',
+					amount: '200000',
+					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+					date: new Date().toLocaleDateString('en-us', this.dateFormat),
 				},
 				{
-					id: "3",
-					amount: "200000",
-					time: new Date().toLocaleTimeString("en-us", this.dateFormat),
-					date: new Date().toLocaleDateString("en-us", this.dateFormat),
+					id: '3',
+					amount: '200000',
+					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+					date: new Date().toLocaleDateString('en-us', this.dateFormat),
 				},
 			],
-		};
+		}
 	},
 
 	computed: {},
-});
+})
 </script>
 
 <style lang="scss">
@@ -161,7 +166,7 @@ export default Vue.extend({
 		flex-direction: column;
 		gap: 16px;
 		justify-content: space-between;
-		background-image: url("@/assets/icons/dashboard_bg.svg");
+		background-image: url('@/assets/icons/dashboard_bg.svg');
 		margin-bottom: 58px;
 
 		@media only screen and (max-width: 1100px) {

@@ -1,27 +1,28 @@
 <template>
-	<div class="community">
-	</div>
+	<AuthLayout>
+		<div class="community"></div>
+	</AuthLayout>
 </template>
-  
-<script>
-import Vue from "vue";
+
+<script lang="ts">
+import Vue from 'vue'
+import AuthLayout from '@/components/layouts/AuthLayout.vue'
 
 export default Vue.extend({
-	name: "CommunityView",
+	name: 'CommunityView',
+
 	components: {
+		AuthLayout,
 	},
+
 	data: function () {
-		return {
-
-		};
+		return {}
 	},
 
-	computed: {
-
-	}
-});
+	computed: {},
+})
 </script>
-  
+
 <style lang="scss">
 .community {
 	margin: 0 50px;
@@ -33,4 +34,3 @@ export default Vue.extend({
 	}
 }
 </style>
-  
