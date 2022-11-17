@@ -1,21 +1,23 @@
 <template>
-	<div class="register-view--container">
+	<div class="login-view--container">
 		<div class="logo--container"><img src="../assets/ec_logo.png" alt="" /></div>
-		<div class="register-form--wrapper">
-			<RegisterForm />
+		<div class="login-form--wrapper">
+			<LoginForm />
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import RegisterForm from '@/components/forms/RegisterForm.vue'
+import LoginForm from '@/components/forms/LoginForm.vue'
+
 export default {
-	components: { RegisterForm },
+	name: 'LoginView',
+	components: { LoginForm },
 }
 </script>
 
 <style>
-.register-view--container {
+.login-view--container {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -33,7 +35,7 @@ export default {
 	align-items: center;
 }
 
-.register-form--wrapper {
+.login-form--wrapper {
 	width: 44%;
 	/* max-width: 700px; */
 	display: flex;
@@ -42,8 +44,8 @@ export default {
 	align-items: center;
 }
 
-@media screen and (max-width: 769px) {
-	.register-view--container {
+@media screen and (max-width: 768px) {
+	.login-view--container {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -62,7 +64,7 @@ export default {
 		height: 154px;
 	}
 
-	.register-form--wrapper {
+	.login-form--wrapper {
 		width: 100%;
 		padding: 0 30px 66px;
 		margin: 52px 0 0;

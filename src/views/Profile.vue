@@ -1,27 +1,28 @@
 <template>
-	<div class="profile">
-	</div>
+	<AuthLayout>
+		<div class="profile"></div>
+	</AuthLayout>
 </template>
-  
-<script>
-import Vue from "vue";
+
+<script lang="ts">
+import Vue from 'vue'
+import AuthLayout from '@/components/layouts/AuthLayout.vue'
 
 export default Vue.extend({
-	name: "ProfileView",
+	name: 'ProfileView',
+
 	components: {
+		AuthLayout,
 	},
+
 	data: function () {
-		return {
-
-		};
+		return {}
 	},
 
-	computed: {
-
-	}
-});
+	computed: {},
+})
 </script>
-  
+
 <style lang="scss">
 .profile {
 	margin: 0 50px;
@@ -33,4 +34,3 @@ export default Vue.extend({
 	}
 }
 </style>
-  
