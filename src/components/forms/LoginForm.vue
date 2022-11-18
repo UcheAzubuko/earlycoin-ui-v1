@@ -58,12 +58,12 @@ export default {
 		async loginUser() {
 			this.loading = true
 			try {
-				// let res = await login(this.email, this.password)
-				// console.log(res)
+				let res = await login(this.email, this.password)
+				console.log(res)
 				this.loading = false
 
 				// 1. save token to localStorage
-				// localStorage.setItem("local", res.access_token);
+				localStorage.setItem('local', res.data.credentials.accessToken)
 
 				// 2. commit login state to vue store
 				this.$store.commit('SET_LISTATE', true)

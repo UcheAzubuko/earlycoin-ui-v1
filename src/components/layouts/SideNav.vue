@@ -65,6 +65,7 @@ export default Vue.extend({
 	methods: {
 		logout() {
 			this.$store.commit('SET_LISTATE', false)
+			localStorage.clear()
 			this.$router.push('/login')
 			// clear local storage here
 		},
