@@ -19,6 +19,7 @@ const routes: Array<RouteConfig> = [
 	},
 	{
 		path: '/',
+		alias: '/dashboard',
 		name: 'dashboard',
 		component: Dashboard,
 		meta: {
@@ -69,6 +70,11 @@ const routes: Array<RouteConfig> = [
 			requiresAuth: true,
 		},
 	},
+	{
+		path: '/:pathMatch(.*)*', //will match everything and put it under `$route.params.pathMatch`
+		name: 'not-found',
+		component: () => import(/* webpackChunkName: "about" */ '../views/Dashboard.vue'),
+	}
 ]
 
 const router = new VueRouter({

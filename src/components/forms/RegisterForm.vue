@@ -144,6 +144,7 @@ export default {
 	font-size: 1.4rem;
 	line-height: 144%;
 	letter-spacing: 0.02em;
+	color: #000000;
 }
 
 .form-input-group > input {
@@ -201,6 +202,7 @@ export default {
 	font-size: 13px;
 	line-height: 19px;
 	opacity: 0.7;
+	color: #000000;
 }
 
 .register-btn {

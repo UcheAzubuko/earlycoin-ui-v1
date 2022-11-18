@@ -1,5 +1,18 @@
 <template>
 	<AuthLayout>
+		<template v-if="wantsToFillKycForm">
+			<div>
+				<OverlayBackground />
+				<KycForm @close="closeKycForm" />
+			</div>
+		</template>
+		<template v-if="wantsToRequestTransfer">
+			<div>
+				<OverlayBackground />
+				<RequestTransfer @close="closeRequestTransferForm" />
+			</div>
+		</template>
+		<CompliancePrompt @openKycForm="openKycForm" />
 		<div class="dashboard">
 			<section class="showcase-wrapper">
 				<!-- Monthly Income Label -->
@@ -9,16 +22,17 @@
 					</div>
 					<div>
 						<span>Monthly Income</span>
-						<span>N200000</span>
+						<span>N{{ `0` }}</span>
 					</div>
 				</div>
 				<!-- EarlyCoin Balance -->
 				<div class="ec-balance-wrapper">
 					<div>
 						<span>EarlyCoin Balance</span>
-						<img class="eye" src="@/assets/icons/eye.svg" alt="" />
+						<img @click="toggleAbilityToViewBalance" class="eye" src="@/assets/icons/eye.svg" alt="" />
 					</div>
-					<span>N600000</span>
+					<span class="ec-balance" v-if="canViewBalance">N{{ `0` }}</span>
+					<span class="ec-balance" v-else>N{{ `**********` }}</span>
 				</div>
 			</section>
 
@@ -47,7 +61,7 @@
 					<section class="transactions-wrapper">
 						<div class="heading">
 							<h2>Last Transactions</h2>
-							<span>See all</span>
+							<span v-if="transactions.length">See all</span>
 						</div>
 						<div class="transactions-list">
 							<div class="transactions-item" v-for="transaction in transactions" :key="transaction.id">
@@ -61,11 +75,14 @@
 								</div>
 								<p class="transaction-amount">N{{ transaction.amount }}</p>
 							</div>
+							<div class="no-transaction-list">
+								<p>You have no transaction history</p>
+							</div>
 						</div>
 					</section>
 				</section>
 				<!-- Request for Salary -->
-				<section class="request-wrapper">
+				<section @click="openRequestTransferForm" class="request-wrapper">
 					<img class="wallet" src="@/assets/icons/wallet.svg" alt="wallet" />
 					<h1>Request for Salary</h1>
 					<div class="arrow-icon">
@@ -78,21 +95,41 @@
 </template>
 
 <script>
-import AuthLayout from '@/components/layouts/AuthLayout.vue'
 import Vue from 'vue'
+import AuthLayout from '@/components/layouts/AuthLayout.vue'
+import CompliancePrompt from '@/components/general/CompliancePrompt.vue'
+import OverlayBackground from '@/components/general/OverlayBackground.vue'
+import KycForm from '@/components/forms/KycForm.vue'
+import RequestTransfer from '@/components/forms/RequestTransfer.vue'
 
 export default Vue.extend({
 	name: 'DashBoard',
 	components: {
 		AuthLayout,
+		CompliancePrompt,
+		KycForm,
+		OverlayBackground,
+		RequestTransfer
 	},
 	data: function () {
 		return {
 			offers: [
-				{ name: 'Restaurant', icon: require('@/assets/icons/restaurant.svg'), id: '1' },
-				{ name: 'Movies', icon: require('@/assets/icons/movies.svg'), id: '2' },
-				{ name: 'Games', icon: require('@/assets/icons/game_controller.svg'), id: '3' },
-				{ name: 'More', icon: require('@/assets/icons/four_circles.svg'), id: '4' },
+				{
+					name: "Restaurant",
+					icon: require("@/assets/icons/restaurant.svg"),
+					id: "1",
+				},
+				{ name: "Movies", icon: require("@/assets/icons/movies.svg"), id: "2" },
+				{
+					name: "Games",
+					icon: require("@/assets/icons/game_controller.svg"),
+					id: "3",
+				},
+				{
+					name: "More",
+					icon: require("@/assets/icons/four_circles.svg"),
+					id: "4",
+				},
 			],
 			dateFormat: {
 				weekday: 'long',
@@ -103,33 +140,52 @@ export default Vue.extend({
 				minute: '2-digit',
 			},
 			transactions: [
-				{
-					id: '1',
-					amount: '200000',
-					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
-					date: new Date().toLocaleDateString('en-us', this.dateFormat),
-				},
-				{
-					id: '2',
-					amount: '200000',
-					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
-					date: new Date().toLocaleDateString('en-us', this.dateFormat),
-				},
-				{
-					id: '3',
-					amount: '200000',
-					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
-					date: new Date().toLocaleDateString('en-us', this.dateFormat),
-				},
+				// {
+				// 	id: '1',
+				// 	amount: '200000',
+				// 	time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+				// 	date: new Date().toLocaleDateString('en-us', this.dateFormat),
+				// },
+				// {
+				// 	id: '2',
+				// 	amount: '200000',
+				// 	time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+				// 	date: new Date().toLocaleDateString('en-us', this.dateFormat),
+				// },
+				// {
+				// 	id: '3',
+				// 	amount: '200000',
+				// 	time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+				// 	date: new Date().toLocaleDateString('en-us', this.dateFormat),
+				// },
 			],
+			wantsToFillKycForm: false,
+			wantsToRequestTransfer: false,
+			canViewBalance: false,
 		}
 	},
 
-	computed: {},
+	methods: {
+		openKycForm() {
+			this.wantsToFillKycForm = true;
+		},
+		closeKycForm() {
+			this.wantsToFillKycForm = false;
+		},
+		openRequestTransferForm() {
+			this.wantsToRequestTransfer = true;
+		},
+		closeRequestTransferForm() {
+			this.wantsToRequestTransfer = false;
+		},
+		toggleAbilityToViewBalance() {
+			this.canViewBalance = !this.canViewBalance;
+		}
+	},
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dashboard {
 	margin: 0 50px;
 
@@ -163,7 +219,7 @@ export default Vue.extend({
 
 		@media only screen and (max-width: 425px) {
 			padding: 18px 25px 18px 15px;
-			height: 220px;
+			height: 210px;
 		}
 
 		.monthly-income-card {
@@ -208,7 +264,7 @@ export default Vue.extend({
 		}
 
 		.ec-balance-wrapper {
-			> div {
+			>div {
 				display: flex;
 				align-items: center;
 				gap: 16px;
@@ -229,13 +285,13 @@ export default Vue.extend({
 				}
 			}
 
-			span {
+			span.ec-balance {
 				font-weight: 500;
 				font-size: 69px;
 				color: #ffc56c;
 
 				@media only screen and (max-width: 425px) {
-					font-size: 50px;
+					font-size: 40px;
 				}
 			}
 		}
@@ -271,6 +327,7 @@ export default Vue.extend({
 		.offers-transactions {
 			.offers-wrapper {
 				.heading {
+					color: #ffffff;
 					display: flex;
 					margin-bottom: 30px;
 					gap: 10px;
@@ -308,6 +365,7 @@ export default Vue.extend({
 						align-items: center;
 						cursor: pointer;
 						text-align: center;
+						color: #ffffff;
 
 						@media only screen and (max-width: 425px) {
 							font-size: 14px;
@@ -351,6 +409,7 @@ export default Vue.extend({
 				}
 
 				.heading {
+					color: #ffffff;
 					display: flex;
 					margin-bottom: 20px;
 					gap: 10px;
@@ -387,7 +446,7 @@ export default Vue.extend({
 						background: #1f1e34;
 						border-radius: 14px;
 
-						> div {
+						>div {
 							display: flex;
 							gap: 10px;
 							font-size: 14px;
@@ -396,8 +455,16 @@ export default Vue.extend({
 						}
 
 						.transaction-amount {
-							font-size: 17.4826px;
+							font-size: 16px;
 							color: #f87777;
+						}
+					}
+
+					.no-transaction-list {
+						p {
+							text-align: center;
+							color: #ffffff;
+							margin-top: 20px;
 						}
 					}
 				}

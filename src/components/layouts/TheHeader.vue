@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div>
-			<span>
+			<span @click="toggleSideNav">
 				<img class="menu" src="@/assets/icons/menu.svg" alt="">
 			</span>
 			<span>
@@ -24,13 +24,16 @@ export default Vue.extend({
 		};
 	},
 
-	computed: {
-
-	}
+	methods: {
+		toggleSideNav() {
+			this.$emit('toggleSideNav')
+			console.log('toggle')
+		}
+	},
 });
 </script>
   
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
 	display: none;
 
@@ -39,17 +42,21 @@ export default Vue.extend({
 	}
 
 	>div {
-		margin: 40px 50px 48px 50px;
+		padding: 40px 50px 30px 50px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 
 		@media only screen and (max-width: 600px) {
-			margin: 40px 30px 48px 30px;
+			padding: 40px 30px 30px 30px;
 		}
 
 		span {
 			display: inline-block;
+
+			.menu {
+				cursor: pointer;
+			}
 		}
 	}
 }

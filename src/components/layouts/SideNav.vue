@@ -72,7 +72,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sidenav {
 	background-color: #9d4af1;
 	width: 272px;

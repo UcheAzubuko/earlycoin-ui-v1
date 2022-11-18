@@ -1,6 +1,6 @@
 <template>
 	<div class="login-view--container">
-		<div class="logo--container"><img src="../assets/ec_logo.png" alt="" /></div>
+		<div class="logo--container"><img src="../assets/icons/ec_logo.svg" alt="" /></div>
 		<div class="login-form--wrapper">
 			<LoginForm />
 		</div>
@@ -38,6 +38,7 @@ export default {
 .login-form--wrapper {
 	width: 44%;
 	/* max-width: 700px; */
+	background: #ffffff;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

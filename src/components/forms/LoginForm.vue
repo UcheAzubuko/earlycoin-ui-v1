@@ -129,6 +129,7 @@ export default {
 	font-size: 1.4rem;
 	line-height: 144%;
 	letter-spacing: 0.02em;
+	color: #000000;
 }
 
 .form-input-group > input {
