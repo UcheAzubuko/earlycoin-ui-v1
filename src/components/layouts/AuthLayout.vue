@@ -59,11 +59,13 @@ export default {
 	padding: 40px 0 20px 0;
 	width: calc(100vw - 272px);
 	margin: 0 0 0 auto;
+	height: 100vh;
 
 	@media only screen and (max-width: 1100px) {
 		width: 100vw;
 		margin: 0 auto;
 		padding: 0px 0 20px 0;
+		height: auto;
 	}
 }
 </style>
