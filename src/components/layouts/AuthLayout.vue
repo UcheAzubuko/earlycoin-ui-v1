@@ -47,9 +47,9 @@ export default {
 #auth-wrapper {
 	display: flex;
 	background: #121127;
+	padding: 0px 0 40px 0;
 
 	@media only screen and (max-width: 1100px) {
-		padding: 0px 0 40px 0;
 		display: block;
 	}
 }

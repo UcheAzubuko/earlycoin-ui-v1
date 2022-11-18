@@ -1,5 +1,11 @@
 /*reset.css*/
 /* RESETS */
+
+/* @font-face {
+	font-family: 'Rubik';
+	src: url('@/src/assets/fonts/Rubik-Regular.ttf') format('truetype');
+} */
+
 *,
 *::before,
 *::after {
@@ -66,10 +72,11 @@ body {
 	width: 100%;
 	font-size: 1.6rem;
 	font-family: 'Rubik', sans-serif;
-	background-color: #fff;
-	color: #000;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
+	background: #121127;
+	color: #ffffff;
+	font-size: 16px;
 }
 
 img {
