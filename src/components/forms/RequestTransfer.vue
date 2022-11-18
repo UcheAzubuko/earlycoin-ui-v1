@@ -1,7 +1,7 @@
 <template>
 	<div class="request-transfer-overlay">
 		<div class="header">
-			<span @click="close">
+			<span @click="closeRequestForm">
 				<img src="@/assets/icons/close.svg" alt="close" class="close">
 			</span>
 			<span>
@@ -63,7 +63,7 @@ export default {
 		submitRequest() {
 			return null
 		},
-		close() {
+		closeRequestForm() {
 			this.$emit('close')
 		}
 	},

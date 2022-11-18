@@ -1,7 +1,7 @@
 <template>
 	<div class="kyc-overlay">
 		<div class="header">
-			<span @click="close">
+			<span @click="closeKycForm">
 				<img src="@/assets/icons/close.svg" alt="close" class="close">
 			</span>
 			<span>
@@ -57,7 +57,7 @@ export default {
 		submitKyc() {
 			return null
 		},
-		close() {
+		closeKycForm() {
 			this.$emit('close')
 		}
 	},
