@@ -1,6 +1,12 @@
 <template>
 	<AuthLayout>
-		<CompliancePrompt />
+		<template v-if="wantsToFillKycForm">
+			<div>
+				<OverlayBackground />
+				<KycForm />
+			</div>
+		</template>
+		<CompliancePrompt @openKycForm="openKycForm" />
 		<div class="dashboard">
 			<section class="showcase-wrapper">
 				<!-- Monthly Income Label -->
@@ -10,7 +16,7 @@
 					</div>
 					<div>
 						<span>Monthly Income</span>
-						<span>N200000</span>
+						<span>N{{ `0` }}</span>
 					</div>
 				</div>
 				<!-- EarlyCoin Balance -->
@@ -19,7 +25,7 @@
 						<span>EarlyCoin Balance</span>
 						<img class="eye" src="@/assets/icons/eye.svg" alt="" />
 					</div>
-					<span>N{{ `600000` }}</span>
+					<span>N{{ `0` }}</span>
 				</div>
 			</section>
 
@@ -82,12 +88,16 @@
 import Vue from 'vue'
 import AuthLayout from '@/components/layouts/AuthLayout.vue'
 import CompliancePrompt from '@/components/general/CompliancePrompt.vue'
+import OverlayBackground from '@/components/general/OverlayBackground.vue'
+import KycForm from '@/components/forms/KycForm.vue'
 
 export default Vue.extend({
 	name: 'DashBoard',
 	components: {
 		AuthLayout,
 		CompliancePrompt,
+		KycForm,
+		OverlayBackground,
 	},
 	data: function () {
 		return {
@@ -137,6 +147,13 @@ export default Vue.extend({
 					date: new Date().toLocaleDateString('en-us', this.dateFormat),
 				},
 			],
+			wantsToFillKycForm: false,
+		}
+	},
+
+	methods: {
+		openKycForm() {
+			this.wantsToFillKycForm = true;
 		}
 	},
 })

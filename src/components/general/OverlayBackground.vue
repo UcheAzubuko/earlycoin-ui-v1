@@ -10,22 +10,22 @@ export default Vue.extend({
     name: "OverlayBackground",
     components: {
     },
-    data: function () {
-        return {
-
-        };
-    },
-
 });
 </script>
   
 <style lang="scss" scoped>
 .overlay {
-    background: #121127e8;
-    width: 100vw;
+    background: #121127d0;
+    z-index: 999999999;
+    display: flex;
+    width: 100%;
     height: 100vh;
     position: fixed;
-    z-index: 999999999;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
 
     @media only screen and (max-width: 1100px) {}
 
