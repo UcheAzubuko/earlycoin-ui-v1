@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 
 import Dashboard from '../views/Dashboard.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/points',
@@ -40,6 +44,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/Points.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/community',
@@ -48,6 +55,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/Community.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/profile',
@@ -56,6 +66,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/:pathMatch(.*)*', //will match everything and put it under `$route.params.pathMatch`
@@ -70,12 +83,28 @@ const router = new VueRouter({
 	routes,
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta?.requiresAuth) {
-//     // need to login
-//   } else {
-//     next()
-//   }
-// })
+// const store = this.$store.direct
+
+router.beforeEach((to, from, next) => {
+	if (to.meta?.requiresAuth) {
+		if (!store.state.L_I) {
+			next({
+				name: 'login',
+			})
+		} else {
+			next()
+		}
+	} else if (to.name == 'login') {
+		if (store.state.L_I) {
+			next({
+				name: 'dashboard',
+			})
+		} else {
+			next()
+		}
+	} else {
+		next()
+	}
+})
 
 export default router

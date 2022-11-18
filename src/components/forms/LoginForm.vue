@@ -29,41 +29,53 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import ButtonGeneric from '../general/ButtonGeneric.vue'
+
+import { login } from '../../services/auth'
 
 export default {
 	components: { ButtonGeneric },
 
 	data() {
 		return {
-			email: '' as string,
-			password: '' as string,
-			loading: false as boolean,
-			isDisabled: false,
+			email: '',
+			password: '',
+			loading: false,
+			// isDisabled: false,
 		}
 	},
 
 	computed: {
-		// isDisabled(): boolean {
-		// 	return this.email === '' || this.password === ''
-		// },
+		isDisabled: {
+			get() {
+				return this.email == '' || this.password == ''
+			},
+		},
 	},
 
 	methods: {
-		loginUser() {
-			// validate inputs first
-			console.log('form here')
-			// this.loading = true
+		async loginUser() {
+			this.loading = true
+			try {
+				// let res = await login(this.email, this.password)
+				// console.log(res)
+				this.loading = false
 
-			// try {
-			// 	setTimeout(() => {
-			// 		this.loading = false
-			// 	}, 3000)
-			// } catch (error) {
-			// 	console.log(error)
-			// 	this.loading = false
-			// }
+				// 1. save token to localStorage
+				// localStorage.setItem("local", res.access_token);
+
+				// 2. commit login state to vue store
+				this.$store.commit('SET_LISTATE', true)
+
+				// 3. set axios header with bearer token for authorisation
+
+				// 4. push route to dashboard page
+				this.$router.push('/')
+			} catch (error) {
+				console.log(error)
+				this.loading = false
+			}
 		},
 	},
 }
@@ -117,6 +129,7 @@ export default {
 	font-size: 1.4rem;
 	line-height: 144%;
 	letter-spacing: 0.02em;
+	color: #000000;
 }
 
 .form-input-group > input {

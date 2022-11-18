@@ -43,6 +43,7 @@ export default {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	background: #ffffff;
 }
 
 @media screen and (max-width: 769px) {
@@ -60,7 +61,7 @@ export default {
 		background: transparent;
 	}
 
-	.logo--container>img {
+	.logo--container > img {
 		width: 225px;
 		height: 154px;
 	}

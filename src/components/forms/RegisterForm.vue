@@ -15,8 +15,13 @@
 
 			<div class="form-input-group">
 				<label for="register-dob">Date Of Birth</label>
-				<date-picker class="date-picker" v-model="dob" type="date" format="DD/MM/YYYY"
-					placeholder="Your date of birth"></date-picker>
+				<date-picker
+					class="date-picker"
+					v-model="dob"
+					type="date"
+					format="DD/MM/YYYY"
+					placeholder="Your date of birth"
+				></date-picker>
 			</div>
 
 			<div class="form-input-group">
@@ -26,8 +31,15 @@
 
 			<div class="form-input-group">
 				<label for="register-password">Password</label>
-				<input id="register-password" v-model="password" placeholder="Your password" type="password"
-					autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" />
+				<input
+					id="register-password"
+					v-model="password"
+					placeholder="Your password"
+					type="password"
+					autocomplete="false"
+					readonly
+					onfocus="this.removeAttribute('readonly');"
+				/>
 			</div>
 
 			<div class="form-checkbox-group">
@@ -35,15 +47,17 @@
 				<label for="register-terms">I have agreed to the terms and condition</label>
 			</div>
 
-			<ButtonGeneric class="register-btn" :btn-text="'Create Account'" :disabled="isDisabled" />
+			<ButtonGeneric @click="createUser" class="register-btn" :btn-text="'Create Account'" :disabled="isDisabled" />
 		</form>
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
 import ButtonGeneric from '../general/ButtonGeneric.vue'
+
+import { register } from '../../services/auth'
 
 export default {
 	components: { ButtonGeneric, DatePicker },
@@ -56,26 +70,28 @@ export default {
 			phoneNumber: '',
 			password: '',
 			agreedToTerms: false,
-			isDisabled: false,
+			// isDisabled: false,
 		}
 	},
 
 	computed: {
-		// isDisabled(): boolean {
-		// 	return (
-		// 		this.name == '' ||
-		// 		this.email == '' ||
-		// 		this.dob == '' ||
-		// 		this.phoneNumber == '' ||
-		// 		this.password == '' ||
-		// 		this.agreedToTerms == false
-		// 	)
-		// },
+		isDisabled() {
+			return (
+				this.name == '' ||
+				this.email == '' ||
+				// this.dob == '' ||
+				this.phoneNumber == '' ||
+				this.password == '' ||
+				this.agreedToTerms == false
+			)
+		},
 	},
 
 	methods: {
 		createUser() {
 			console.log('form here')
+			let res = register(this.name, this.email, this.phoneNumber, this.password)
+			console.log(res)
 		},
 	},
 }
@@ -90,7 +106,7 @@ export default {
 	align-items: flex-start;
 }
 
-.register-form--container>h2 {
+.register-form--container > h2 {
 	font-family: 'Rubik';
 	font-style: normal;
 	font-weight: 700;
@@ -108,11 +124,50 @@ export default {
 	align-items: flex-start;
 }
 
-.form-input-group>.date-picker {
+.form-input-group {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	/* height: 8.7rem; */
+	padding: 10px 18px;
+	border: 1px solid #9d4af1;
+	border-radius: 12px;
+	margin-bottom: 24px;
+}
+
+.form-input-group > label {
+	font-family: 'Sen';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 144%;
+	letter-spacing: 0.02em;
+	color: #000000;
+}
+
+.form-input-group > input {
+	height: 28px;
+	width: 100%;
+	font-family: 'Sen';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 144%;
+	letter-spacing: 0.02em;
+	margin-top: 6px;
+
+	outline: none;
+	background: transparent;
+	border: none;
+}
+
+.form-input-group > .date-picker {
 	width: 100%;
 }
 
-.form-input-group>.date-picker>.mx-input-wrapper>input {
+.form-input-group > .date-picker > .mx-input-wrapper > input {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	border: none;
@@ -139,7 +194,7 @@ export default {
 	margin: 10px 0 34px;
 }
 
-.form-checkbox-group>label {
+.form-checkbox-group > label {
 	margin-left: 10px;
 	font-family: 'Sen';
 	font-style: normal;
@@ -147,6 +202,7 @@ export default {
 	font-size: 13px;
 	line-height: 19px;
 	opacity: 0.7;
+	color: #000000;
 }
 
 .register-btn {
@@ -159,7 +215,7 @@ export default {
 		align-items: center;
 	}
 
-	.register-form--container>h2 {
+	.register-form--container > h2 {
 		font-size: 20px;
 		line-height: 36px;
 		text-align: center;
@@ -167,7 +223,7 @@ export default {
 		margin-bottom: 14px;
 	}
 
-	.form-input-group>.date-picker>.mx-input-wrapper>input {
+	.form-input-group > .date-picker > .mx-input-wrapper > input {
 		height: 20px;
 		font-size: 1.6rem;
 		margin-top: 6px;
@@ -178,7 +234,7 @@ export default {
 		margin: 16px 0 58px;
 	}
 
-	.form-checkbox-group>label {
+	.form-checkbox-group > label {
 		margin-left: 8px;
 		font-size: 1.2rem;
 		color: #ffffff;

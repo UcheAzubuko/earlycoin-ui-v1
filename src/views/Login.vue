@@ -38,6 +38,7 @@ export default {
 .login-form--wrapper {
 	width: 44%;
 	/* max-width: 700px; */
+	background: #ffffff;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -59,7 +60,7 @@ export default {
 		background: transparent;
 	}
 
-	.logo--container>img {
+	.logo--container > img {
 		width: 225px;
 		height: 154px;
 	}
