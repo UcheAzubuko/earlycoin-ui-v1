@@ -22,7 +22,7 @@
 
 			<div class="form-input-group">
 				<label for="monthlyIncome">Monthly income</label>
-				<input id="monthlyIncome" v-model="monthlyIncome" placeholder="N400,000" type="text" />
+				<input id="monthlyIncome" v-model="monthlyIncome" placeholder="N400000" type="text" />
 			</div>
 
 			<div class="form-input-group">
