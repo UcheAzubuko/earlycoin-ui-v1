@@ -84,7 +84,8 @@ export default {
 	transform: translate(-50%, -50%);
 
 	@media screen and (max-width: 426px) {
-		width: 350px;
+		width: 90%;
+		height: 75%;
 
 		.kyc-form {
 			.form-input-group {

@@ -30,8 +30,8 @@
 
 			<div class="form-input-group">
 				<label for="password">Password</label>
-				<input id="login-password" v-model="password" placeholder="**********" type="password" autocomplete="false"
-					readonly onfocus="this.removeAttribute('readonly');" />
+				<input id="login-password" v-model="password" placeholder="**********" type="password"
+					autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" />
 			</div>
 
 			<ButtonGeneric :loading="isLoading" class="request-transfer-btn" :btn-text="'Send to account'"
@@ -88,7 +88,8 @@ export default {
 	transform: translate(-50%, -50%);
 
 	@media screen and (max-width: 426px) {
-		width: 350px;
+		width: 90%;
+		height: 75%;
 
 		.request-transfer-form {
 			.form-input-group {
