@@ -69,7 +69,7 @@ export default Vue.extend({
 	background-color: #9D4AF1;
 	width: 272px;
 	height: 100vh;
-	// position: fixed;
+	position: fixed;
 
 	.logo-wrapper {
 		background-color: #7F69C0;

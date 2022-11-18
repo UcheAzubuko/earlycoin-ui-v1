@@ -19,7 +19,7 @@
 						<span>EarlyCoin Balance</span>
 						<img class="eye" src="@/assets/icons/eye.svg" alt="" />
 					</div>
-					<span>N600000</span>
+					<span>N{{ `600000` }}</span>
 				</div>
 			</section>
 
