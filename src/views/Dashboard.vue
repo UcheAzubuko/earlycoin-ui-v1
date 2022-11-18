@@ -31,8 +31,8 @@
 						<span>EarlyCoin Balance</span>
 						<img @click="toggleAbilityToViewBalance" class="eye" src="@/assets/icons/eye.svg" alt="" />
 					</div>
-					<span v-if="canViewBalance">N{{ `0` }}</span>
-					<span v-else>N{{ `**********` }}</span>
+					<span class="ec-balance" v-if="canViewBalance">N{{ `0` }}</span>
+					<span class="ec-balance" v-else>N{{ `**********` }}</span>
 				</div>
 			</section>
 
@@ -61,7 +61,7 @@
 					<section class="transactions-wrapper">
 						<div class="heading">
 							<h2>Last Transactions</h2>
-							<span>See all</span>
+							<span v-if="transactions.length">See all</span>
 						</div>
 						<div class="transactions-list">
 							<div class="transactions-item" v-for="transaction in transactions" :key="transaction.id">
@@ -74,6 +74,9 @@
 									</p>
 								</div>
 								<p class="transaction-amount">N{{ transaction.amount }}</p>
+							</div>
+							<div class="no-transaction-list">
+								<p>You have no transaction history</p>
 							</div>
 						</div>
 					</section>
@@ -137,24 +140,24 @@ export default Vue.extend({
 				minute: '2-digit',
 			},
 			transactions: [
-				{
-					id: '1',
-					amount: '200000',
-					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
-					date: new Date().toLocaleDateString('en-us', this.dateFormat),
-				},
-				{
-					id: '2',
-					amount: '200000',
-					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
-					date: new Date().toLocaleDateString('en-us', this.dateFormat),
-				},
-				{
-					id: '3',
-					amount: '200000',
-					time: new Date().toLocaleTimeString('en-us', this.dateFormat),
-					date: new Date().toLocaleDateString('en-us', this.dateFormat),
-				},
+				// {
+				// 	id: '1',
+				// 	amount: '200000',
+				// 	time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+				// 	date: new Date().toLocaleDateString('en-us', this.dateFormat),
+				// },
+				// {
+				// 	id: '2',
+				// 	amount: '200000',
+				// 	time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+				// 	date: new Date().toLocaleDateString('en-us', this.dateFormat),
+				// },
+				// {
+				// 	id: '3',
+				// 	amount: '200000',
+				// 	time: new Date().toLocaleTimeString('en-us', this.dateFormat),
+				// 	date: new Date().toLocaleDateString('en-us', this.dateFormat),
+				// },
 			],
 			wantsToFillKycForm: false,
 			wantsToRequestTransfer: false,
@@ -216,7 +219,7 @@ export default Vue.extend({
 
 		@media only screen and (max-width: 425px) {
 			padding: 18px 25px 18px 15px;
-			height: 220px;
+			height: 210px;
 		}
 
 		.monthly-income-card {
@@ -282,13 +285,13 @@ export default Vue.extend({
 				}
 			}
 
-			span {
+			span.ec-balance {
 				font-weight: 500;
 				font-size: 69px;
 				color: #ffc56c;
 
 				@media only screen and (max-width: 425px) {
-					font-size: 50px;
+					font-size: 40px;
 				}
 			}
 		}
@@ -452,8 +455,16 @@ export default Vue.extend({
 						}
 
 						.transaction-amount {
-							font-size: 17.4826px;
+							font-size: 16px;
 							color: #f87777;
+						}
+					}
+
+					.no-transaction-list {
+						p {
+							text-align: center;
+							color: #ffffff;
+							margin-top: 20px;
 						}
 					}
 				}
