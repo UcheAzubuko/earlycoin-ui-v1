@@ -1,6 +1,6 @@
 <template>
 	<div class="register-view--container">
-		<div class="logo--container"><img src="../assets/ec_logo.png" alt="" /></div>
+		<div class="logo--container"><img src="../assets/icons/ec_logo.svg" alt="" /></div>
 		<div class="register-form--wrapper">
 			<RegisterForm />
 		</div>
@@ -60,7 +60,7 @@ export default {
 		background: transparent;
 	}
 
-	.logo--container > img {
+	.logo--container>img {
 		width: 225px;
 		height: 154px;
 	}
