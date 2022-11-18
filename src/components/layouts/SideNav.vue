@@ -1,7 +1,7 @@
 <template>
 	<div class="sidenav">
 		<div class="logo-wrapper">
-			<img src="@/assets/icons/home_logo.svg" alt="early coins logo">
+			<img src="@/assets/icons/home_logo.svg" alt="early coins logo" />
 		</div>
 		<div class="username-wrapper">
 			<div class="username-wrapper__initials">
@@ -32,47 +32,55 @@
 					<router-link to="/profile">Profile</router-link>
 				</li>
 			</ul>
-			<button class="logout-btn">Log Out</button>
+			<button class="logout-btn" @click="logout">Log Out</button>
 		</div>
 	</div>
 </template>
-  
+
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 
 export default Vue.extend({
-	name: "HomeView",
-	components: {
-	},
+	name: 'HomeView',
+	components: {},
+
 	data: function () {
 		return {
 			user: {
 				firstname: 'Uche',
-				lastname: 'Azubuko'
+				lastname: 'Azubuko',
 			},
-		};
+		}
 	},
 
 	computed: {
 		fullname: function () {
-			return this.user.firstname + ' ' + this.user.lastname;
+			return this.user.firstname + ' ' + this.user.lastname
 		},
 		initials: function () {
-			return this.fullname[0];
-		}
-	}
-});
+			return this.fullname[0]
+		},
+	},
+
+	methods: {
+		logout() {
+			this.$store.commit('SET_LISTATE', false)
+			this.$router.push('/login')
+			// clear local storage here
+		},
+	},
+})
 </script>
-  
+
 <style lang="scss">
 .sidenav {
-	background-color: #9D4AF1;
+	background-color: #9d4af1;
 	width: 272px;
 	height: 100vh;
 	position: fixed;
 
 	.logo-wrapper {
-		background-color: #7F69C0;
+		background-color: #7f69c0;
 		height: 108px;
 		display: flex;
 		align-items: center;
@@ -93,7 +101,7 @@ export default Vue.extend({
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-color: #7E3BC2;
+			background-color: #7e3bc2;
 			border-radius: 50%;
 			font-weight: 700;
 		}
@@ -131,13 +139,11 @@ export default Vue.extend({
 					transition: all 0.15s linear;
 
 					&.router-link-exact-active {
-						border-right: solid 8px #FFB91C;
-						background-color: #7E3BC2;
+						border-right: solid 8px #ffb91c;
+						background-color: #7e3bc2;
 					}
 				}
-
 			}
-
 		}
 
 		button.logout-btn {
@@ -163,4 +169,3 @@ export default Vue.extend({
 	}
 }
 </style>
-  

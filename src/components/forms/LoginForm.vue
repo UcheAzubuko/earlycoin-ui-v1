@@ -55,20 +55,27 @@ export default {
 	},
 
 	methods: {
-		loginUser() {
-			// validate inputs first
-			console.log('form here')
-			// this.loading = true
-			// let val = login(this.email, this.password)
+		async loginUser() {
+			this.loading = true
+			try {
+				// let res = await login(this.email, this.password)
+				// console.log(res)
+				this.loading = false
 
-			// try {
-			// 	setTimeout(() => {
-			// 		this.loading = false
-			// 	}, 3000)
-			// } catch (error) {
-			// 	console.log(error)
-			// 	this.loading = false
-			// }
+				// 1. save token to localStorage
+				// localStorage.setItem("local", res.access_token);
+
+				// 2. commit login state to vue store
+				this.$store.commit('SET_LISTATE', true)
+
+				// 3. set axios header with bearer token for authorisation
+
+				// 4. push route to dashboard page
+				this.$router.push('/')
+			} catch (error) {
+				console.log(error)
+				this.loading = false
+			}
 		},
 	},
 }

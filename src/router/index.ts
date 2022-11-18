@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 
 import Dashboard from '../views/Dashboard.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -76,14 +77,21 @@ const router = new VueRouter({
 	routes,
 })
 
-const loggedIn = false
+// const store = this.$store.direct
 
 router.beforeEach((to, from, next) => {
 	if (to.meta?.requiresAuth) {
-		// need to login
-		if (!loggedIn) {
+		if (!store.state.L_I) {
 			next({
 				name: 'login',
+			})
+		} else {
+			next()
+		}
+	} else if (to.name == 'login') {
+		if (store.state.L_I) {
+			next({
+				name: 'dashboard',
 			})
 		} else {
 			next()

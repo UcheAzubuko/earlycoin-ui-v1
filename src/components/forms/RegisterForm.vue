@@ -47,7 +47,7 @@
 				<label for="register-terms">I have agreed to the terms and condition</label>
 			</div>
 
-			<ButtonGeneric class="register-btn" :btn-text="'Create Account'" :disabled="isDisabled" />
+			<ButtonGeneric @click="createUser" class="register-btn" :btn-text="'Create Account'" :disabled="isDisabled" />
 		</form>
 	</div>
 </template>
@@ -56,6 +56,8 @@
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
 import ButtonGeneric from '../general/ButtonGeneric.vue'
+
+import { register } from '../../services/auth'
 
 export default {
 	components: { ButtonGeneric, DatePicker },
@@ -77,7 +79,7 @@ export default {
 			return (
 				this.name == '' ||
 				this.email == '' ||
-				this.dob == '' ||
+				// this.dob == '' ||
 				this.phoneNumber == '' ||
 				this.password == '' ||
 				this.agreedToTerms == false
@@ -88,6 +90,8 @@ export default {
 	methods: {
 		createUser() {
 			console.log('form here')
+			let res = register(this.name, this.email, this.phoneNumber, this.password)
+			console.log(res)
 		},
 	},
 }
