@@ -29,9 +29,10 @@
 				<div class="ec-balance-wrapper">
 					<div>
 						<span>EarlyCoin Balance</span>
-						<img class="eye" src="@/assets/icons/eye.svg" alt="" />
+						<img @click="toggleAbilityToViewBalance" class="eye" src="@/assets/icons/eye.svg" alt="" />
 					</div>
-					<span>N{{ `0` }}</span>
+					<span v-if="canViewBalance">N{{ `0` }}</span>
+					<span v-else>N{{ `**********` }}</span>
 				</div>
 			</section>
 
@@ -157,6 +158,7 @@ export default Vue.extend({
 			],
 			wantsToFillKycForm: false,
 			wantsToRequestTransfer: false,
+			canViewBalance: false,
 		}
 	},
 
@@ -172,6 +174,9 @@ export default Vue.extend({
 		},
 		closeRequestTransferForm() {
 			this.wantsToRequestTransfer = false;
+		},
+		toggleAbilityToViewBalance() {
+			this.canViewBalance = !this.canViewBalance;
 		}
 	},
 })
