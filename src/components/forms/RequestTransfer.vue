@@ -95,9 +95,6 @@ export default {
 		.request-transfer-form {
 			.form-input-group {
 				width: 100%;
-				padding: 9px 12px;
-				border: 1px solid #9d4af1;
-				border-radius: 8px;
 				color: #ffffff;
 				margin-bottom: 18px;
 			}
@@ -108,14 +105,9 @@ export default {
 			}
 
 			.form-input-group>input {
-				height: 20px;
 				font-size: 1.6rem;
 				margin-top: 6px;
-				color: #ffffff;
-			}
-
-			.request-transfer-btn {
-				width: 255px;
+				color: #70737C;
 			}
 		}
 	}
@@ -145,7 +137,6 @@ export default {
 		}
 
 		.header-text {
-			height: 70px;
 			flex-direction: row;
 			padding: 12px 50px;
 			margin-bottom: 38px;
@@ -201,6 +192,7 @@ export default {
 			outline: none;
 			font-size: 14px;
 			background: transparent;
+			color: #70737C;
 		}
 	}
 }

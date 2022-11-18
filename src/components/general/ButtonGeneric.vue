@@ -47,6 +47,7 @@ export default {
 	color: #ffffff;
 	cursor: pointer;
 	margin: 0 auto;
+	white-space: nowrap;
 }
 
 .btn-generic>svg {
@@ -58,6 +59,7 @@ export default {
 		padding: 20px 80px;
 		font-size: 14px;
 		line-height: 17px;
+		width: 100%;
 	}
 }
 </style>
