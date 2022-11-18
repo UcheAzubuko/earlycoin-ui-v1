@@ -182,6 +182,12 @@ export default Vue.extend({
 			this.canViewBalance = !this.canViewBalance;
 		}
 	},
+
+	mounted() {
+		const userInfo = localStorage.getItem('user-info');
+		console.log(userInfo)
+
+	},
 })
 </script>
 

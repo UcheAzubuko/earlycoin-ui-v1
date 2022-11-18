@@ -1,7 +1,7 @@
 <template>
 	<div class="sidenav">
 		<div class="logo-wrapper">
-			<img src="@/assets/icons/home_logo.svg" alt="early coins logo" />
+			<img src="@/assets/icons/home_logo.svg" alt="early coin logo" />
 		</div>
 		<div class="username-wrapper">
 			<div class="username-wrapper__initials">
@@ -41,24 +41,21 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-	name: 'HomeView',
+	name: 'SideNav',
 	components: {},
 
 	data: function () {
 		return {
-			user: {
-				firstname: 'Uche',
-				lastname: 'Azubuko',
-			},
+			user: {},
 		}
 	},
 
 	computed: {
 		fullname: function () {
-			return this.user.firstname + ' ' + this.user.lastname
+			return this.user.user.firstName + ' ' + this.user.user.lastName
 		},
 		initials: function () {
-			return this.fullname[0]
+			return this.fullname[0].toUpperCase()
 		},
 	},
 
@@ -69,6 +66,11 @@ export default Vue.extend({
 			this.$router.push('/login')
 			// clear local storage here
 		},
+	},
+
+	beforeMount() {
+		let userInfo = localStorage.getItem('user-info');
+		this.user = JSON.parse(userInfo);
 	},
 })
 </script>
@@ -122,6 +124,7 @@ export default Vue.extend({
 			span:nth-child(2) {
 				font-size: 18px;
 				font-weight: 500;
+				text-align: end;
 			}
 		}
 	}
