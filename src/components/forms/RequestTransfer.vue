@@ -67,6 +67,10 @@ export default {
 			this.$emit('close')
 		}
 	},
+
+	mounted() {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	},
 }
 </script>
 
