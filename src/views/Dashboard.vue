@@ -3,7 +3,13 @@
 		<template v-if="wantsToFillKycForm">
 			<div>
 				<OverlayBackground />
-				<KycForm />
+				<KycForm @close="closeKycForm" />
+			</div>
+		</template>
+		<template v-if="wantsToRequestTransfer">
+			<div>
+				<OverlayBackground />
+				<RequestTransfer @close="closeRequestTransferForm" />
 			</div>
 		</template>
 		<CompliancePrompt @openKycForm="openKycForm" />
@@ -72,7 +78,7 @@
 					</section>
 				</section>
 				<!-- Request for Salary -->
-				<section class="request-wrapper">
+				<section @click="openRequestTransferForm" class="request-wrapper">
 					<img class="wallet" src="@/assets/icons/wallet.svg" alt="wallet" />
 					<h1>Request for Salary</h1>
 					<div class="arrow-icon">
@@ -90,6 +96,7 @@ import AuthLayout from '@/components/layouts/AuthLayout.vue'
 import CompliancePrompt from '@/components/general/CompliancePrompt.vue'
 import OverlayBackground from '@/components/general/OverlayBackground.vue'
 import KycForm from '@/components/forms/KycForm.vue'
+import RequestTransfer from '@/components/forms/RequestTransfer.vue'
 
 export default Vue.extend({
 	name: 'DashBoard',
@@ -98,6 +105,7 @@ export default Vue.extend({
 		CompliancePrompt,
 		KycForm,
 		OverlayBackground,
+		RequestTransfer
 	},
 	data: function () {
 		return {
@@ -148,12 +156,22 @@ export default Vue.extend({
 				},
 			],
 			wantsToFillKycForm: false,
+			wantsToRequestTransfer: false,
 		}
 	},
 
 	methods: {
 		openKycForm() {
 			this.wantsToFillKycForm = true;
+		},
+		closeKycForm() {
+			this.wantsToFillKycForm = false;
+		},
+		openRequestTransferForm() {
+			this.wantsToRequestTransfer = true;
+		},
+		closeRequestTransferForm() {
+			this.wantsToRequestTransfer = false;
 		}
 	},
 })

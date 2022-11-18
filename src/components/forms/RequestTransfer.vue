@@ -1,5 +1,5 @@
 <template>
-	<div class="kyc-overlay">
+	<div class="request-transfer-overlay">
 		<div class="header">
 			<span @click="close">
 				<img src="@/assets/icons/close.svg" alt="close" class="close">
@@ -7,29 +7,35 @@
 			<span>
 				<img src="@/assets/icons/home_logo.svg" alt="early coins logo" class="logo">
 			</span>
-			<h1>KYC Form</h1>
+			<div class="header-text">
+				<img class="wallet" src="@/assets/icons/wallet.svg" alt="wallet" />
+				<p>Request for Salary</p>
+			</div>
 		</div>
-		<form method="post" @submit.prevent="submitKyc" class="kyc-form" autocomplete="off">
+		<form method="post" @submit.prevent="submitRequest" class="request-transfer-form" autocomplete="off">
 			<div class="form-input-group">
-				<label for="employerDetails">Employer details</label>
-				<input id="employerDetails" v-model="employerDetails" placeholder="Joseph" type="text" />
+				<label for="amountToWithdraw">Amount to withdraw</label>
+				<input id="amountToWithdraw" v-model="amountToWithdraw" placeholder="e.g. 40000" type="text" />
 			</div>
 
 			<div class="form-input-group">
-				<label for="nameOfCompany">Name of company</label>
-				<input id="nameOfCompany" v-model="nameOfCompany" placeholder="DaraCo" type="text" />
+				<label for="selectDestination">Select destination</label>
+				<input id="selectDestination" v-model="selectDestination" placeholder="023428382" type="text" />
 			</div>
 
 			<div class="form-input-group">
-				<label for="monthlyIncome">Monthly income</label>
-				<input id="monthlyIncome" v-model="monthlyIncome" placeholder="N400,000" type="text" />
+				<label for="destinationBank">Destination bank</label>
+				<input id="destinationBank" v-model="destinationBank" placeholder="GTBank" type="text" />
 			</div>
 
 			<div class="form-input-group">
-				<label for="bvn">BVN</label>
-				<input id="bvn" v-model="bvn" type="text" />
+				<label for="password">Password</label>
+				<input id="login-password" v-model="password" placeholder="**********" type="password" autocomplete="false"
+					readonly onfocus="this.removeAttribute('readonly');" />
 			</div>
-			<ButtonGeneric :loading="isLoading" class="kyc-btn" :btn-text="'Click to verify'" :disabled="isDisabled" />
+
+			<ButtonGeneric :loading="isLoading" class="request-transfer-btn" :btn-text="'Send to account'"
+				:disabled="isDisabled" />
 		</form>
 	</div>
 </template>
@@ -38,23 +44,23 @@
 import ButtonGeneric from '@/components/general/ButtonGeneric.vue'
 
 export default {
-	name: 'KycForm',
+	name: 'RequestTransfer',
 
 	components: { ButtonGeneric },
 
 	data() {
 		return {
 			isLoading: false,
-			employerDetails: '',
-			nameOfCompany: '',
-			monthlyIncome: '',
-			bvn: '',
+			amountToWithdraw: '',
+			selectDestination: '',
+			destinationBank: '',
+			password: '',
 			isDisabled: true,
 		}
 	},
 
 	methods: {
-		submitKyc() {
+		submitRequest() {
 			return null
 		},
 		close() {
@@ -65,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.kyc-overlay {
+.request-transfer-overlay {
 	// margin: auto 0 auto 0;
 	// max-height: 65%;
 	width: 500px;
@@ -86,7 +92,7 @@ export default {
 	@media screen and (max-width: 426px) {
 		width: 350px;
 
-		.kyc-form {
+		.request-transfer-form {
 			.form-input-group {
 				width: 100%;
 				padding: 9px 12px;
@@ -108,9 +114,8 @@ export default {
 				color: #ffffff;
 			}
 
-			.kyc-btn {
+			.request-transfer-btn {
 				width: 255px;
-				margin: 20px auto 0 auto;
 			}
 		}
 	}
@@ -118,6 +123,10 @@ export default {
 
 	.header {
 		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 
 		span {
 			display: inline-block;
@@ -135,15 +144,32 @@ export default {
 			}
 		}
 
-		h1 {
-			font-size: 24px;
-			font-weight: bold;
-			color: white;
-			margin-bottom: 30px;
+		.header-text {
+			height: 70px;
+			flex-direction: row;
+			padding: 12px 50px;
+			margin-bottom: 38px;
+			margin-top: 0;
+			border-radius: 0px 10px;
+			background: #ffb91c;
+			color: #121127;
+			width: max-content;
+			font-size: 16px;
+			display: flex;
+			flex-direction: row;
+			gap: 7px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.wallet {
+				height: 30px;
+			}
 		}
 	}
 
-	.kyc-form {
+	.request-transfer-form {
 		.form-input-group {
 			display: flex;
 			flex-direction: column;
@@ -177,6 +203,5 @@ export default {
 			background: transparent;
 		}
 	}
-
 }
 </style>
