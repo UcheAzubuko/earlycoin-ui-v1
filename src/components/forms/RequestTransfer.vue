@@ -40,7 +40,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import ButtonGeneric from '@/components/general/ButtonGeneric.vue'
 
 export default {
@@ -63,7 +63,7 @@ export default {
 		submitRequest() {
 			return null
 		},
-		closeRequestForm(): void {
+		closeRequestForm() {
 			this.$emit('close')
 		}
 	},

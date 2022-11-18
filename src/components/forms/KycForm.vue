@@ -34,7 +34,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import ButtonGeneric from '@/components/general/ButtonGeneric.vue'
 
 export default {
@@ -57,7 +57,7 @@ export default {
 		submitKyc() {
 			return null
 		},
-		closeKycForm(): void {
+		closeKycForm() {
 			this.$emit('close')
 		}
 	},
