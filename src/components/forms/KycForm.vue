@@ -118,6 +118,7 @@ export default {
 				top: 25px;
 				right: 30px;
 				height: 15px;
+				cursor: pointer;
 			}
 
 			.logo {
