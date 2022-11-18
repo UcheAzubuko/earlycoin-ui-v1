@@ -57,7 +57,7 @@ export default {
 		submitKyc() {
 			return null
 		},
-		closeKycForm() {
+		closeKycForm(): void {
 			this.$emit('close')
 		}
 	},

@@ -63,7 +63,7 @@ export default {
 		submitRequest() {
 			return null
 		},
-		closeRequestForm() {
+		closeRequestForm(): void {
 			this.$emit('close')
 		}
 	},
@@ -72,8 +72,6 @@ export default {
 
 <style lang="scss" scoped>
 .request-transfer-overlay {
-	// margin: auto 0 auto 0;
-	// max-height: 65%;
 	width: 500px;
 	border-radius: 10px;
 	height: auto;
