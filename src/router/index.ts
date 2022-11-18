@@ -31,6 +31,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/points',
@@ -39,6 +42,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/Points.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/community',
@@ -47,6 +53,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/Community.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/profile',
@@ -55,6 +64,9 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
+		meta: {
+			requiresAuth: true,
+		},
 	},
 ]
 
@@ -64,12 +76,21 @@ const router = new VueRouter({
 	routes,
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta?.requiresAuth) {
-//     // need to login
-//   } else {
-//     next()
-//   }
-// })
+const loggedIn = false
+
+router.beforeEach((to, from, next) => {
+	if (to.meta?.requiresAuth) {
+		// need to login
+		if (!loggedIn) {
+			next({
+				name: 'login',
+			})
+		} else {
+			next()
+		}
+	} else {
+		next()
+	}
+})
 
 export default router

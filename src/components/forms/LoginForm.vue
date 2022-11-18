@@ -29,25 +29,29 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import ButtonGeneric from '../general/ButtonGeneric.vue'
+
+import { login } from '../../services/auth'
 
 export default {
 	components: { ButtonGeneric },
 
 	data() {
 		return {
-			email: '' as string,
-			password: '' as string,
-			loading: false as boolean,
-			isDisabled: false,
+			email: '',
+			password: '',
+			loading: false,
+			// isDisabled: false,
 		}
 	},
 
 	computed: {
-		// isDisabled(): boolean {
-		// 	return this.email === '' || this.password === ''
-		// },
+		isDisabled: {
+			get() {
+				return this.email == '' || this.password == ''
+			},
+		},
 	},
 
 	methods: {
@@ -55,6 +59,7 @@ export default {
 			// validate inputs first
 			console.log('form here')
 			// this.loading = true
+			// let val = login(this.email, this.password)
 
 			// try {
 			// 	setTimeout(() => {

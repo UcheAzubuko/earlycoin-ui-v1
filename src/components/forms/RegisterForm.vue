@@ -52,7 +52,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
 import ButtonGeneric from '../general/ButtonGeneric.vue'
@@ -68,21 +68,21 @@ export default {
 			phoneNumber: '',
 			password: '',
 			agreedToTerms: false,
-			isDisabled: false,
+			// isDisabled: false,
 		}
 	},
 
 	computed: {
-		// isDisabled(): boolean {
-		// 	return (
-		// 		this.name == '' ||
-		// 		this.email == '' ||
-		// 		this.dob == '' ||
-		// 		this.phoneNumber == '' ||
-		// 		this.password == '' ||
-		// 		this.agreedToTerms == false
-		// 	)
-		// },
+		isDisabled() {
+			return (
+				this.name == '' ||
+				this.email == '' ||
+				this.dob == '' ||
+				this.phoneNumber == '' ||
+				this.password == '' ||
+				this.agreedToTerms == false
+			)
+		},
 	},
 
 	methods: {
@@ -118,6 +118,44 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
+}
+
+.form-input-group {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	/* height: 8.7rem; */
+	padding: 10px 18px;
+	border: 1px solid #9d4af1;
+	border-radius: 12px;
+	margin-bottom: 24px;
+}
+
+.form-input-group > label {
+	font-family: 'Sen';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 144%;
+	letter-spacing: 0.02em;
+}
+
+.form-input-group > input {
+	height: 28px;
+	width: 100%;
+	font-family: 'Sen';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 144%;
+	letter-spacing: 0.02em;
+	margin-top: 6px;
+
+	outline: none;
+	background: transparent;
+	border: none;
 }
 
 .form-input-group > .date-picker {
