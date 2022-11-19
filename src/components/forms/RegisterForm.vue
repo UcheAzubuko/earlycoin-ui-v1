@@ -29,6 +29,8 @@
 				<label for="register-password">Password</label>
 				<input id="register-password" v-model="password" placeholder="Your password" type="password"
 					autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" />
+				<span class="caution">Must have at least one uppercase letter,including lowercase
+					letters, and a number</span>
 			</div>
 
 			<div class="form-checkbox-group">
