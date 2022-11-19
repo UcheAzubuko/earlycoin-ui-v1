@@ -74,11 +74,11 @@ const routes: Array<RouteConfig> = [
 		path: '/:pathMatch(.*)*', //will match everything and put it under `$route.params.pathMatch`
 		name: 'not-found',
 		component: () => import(/* webpackChunkName: "about" */ '../views/Dashboard.vue'),
-	}
+	},
 ]
 
 const router = new VueRouter({
-	mode: 'history',
+	mode: 'hash',
 	base: process.env.BASE_URL,
 	routes,
 })
