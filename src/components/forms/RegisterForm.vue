@@ -6,6 +6,7 @@
 			<div class="form-input-group">
 				<label for="register-name">Name</label>
 				<input id="register-name" v-model="name" placeholder="Your name" type="text" />
+				<span class="caution">Must begin with uppercase</span>
 			</div>
 
 			<div class="form-input-group">
@@ -102,7 +103,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .register-form--container {
 	width: 460px;
 	display: flex;
@@ -140,6 +141,12 @@ export default {
 	border: 1px solid #9d4af1;
 	border-radius: 12px;
 	margin-bottom: 24px;
+
+	span.caution {
+		font-size: 13px;
+		color: #000;
+		display: block;
+	}
 }
 
 .form-input-group>label {
