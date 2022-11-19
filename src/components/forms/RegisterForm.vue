@@ -88,13 +88,14 @@ export default {
 	},
 
 	methods: {
-		createUser() {
-			console.log('form here')
-			let res = register(this.name, this.email, this.phoneNumber, this.password)
+		async createUser() {
+			// console.log('form here')
+			let res = await register(this.name, this.email, this.phoneNumber, this.password)
 
 			localStorage.setItem('local', res.data.credentials.accessToken)
 			localStorage.setItem('user-info', JSON.stringify(res.data.credentials.user))
-			console.log(res)
+			this.$router.push('/')
+			// console.log(res)
 		},
 	},
 }
