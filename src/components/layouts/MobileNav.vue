@@ -67,11 +67,17 @@ export default Vue.extend({
 
 	computed: {
 		fullname: function () {
-			return this.user.firstname + ' ' + this.user.lastname
+			return this.user.firstName + ' ' + this.user.lastName
 		},
 		initials: function () {
 			return this.fullname[0]
 		},
+	},
+
+	beforeMount() {
+		let userInfo = localStorage.getItem('user-info')
+		this.user = JSON.parse(userInfo)
+		// console.log(this.user)
 	},
 })
 </script>
