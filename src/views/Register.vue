@@ -70,6 +70,7 @@ export default {
 		width: 100%;
 		padding: 0 30px 66px;
 		margin: 52px 0 0;
+		background: transparent;
 	}
 }
 </style>

@@ -109,26 +109,26 @@ export default Vue.extend({
 		CompliancePrompt,
 		KycForm,
 		OverlayBackground,
-		RequestTransfer
+		RequestTransfer,
 	},
 	data: function () {
 		return {
 			offers: [
 				{
-					name: "Restaurant",
-					icon: require("@/assets/icons/restaurant.svg"),
-					id: "1",
+					name: 'Restaurant',
+					icon: require('@/assets/icons/restaurant.svg'),
+					id: '1',
 				},
-				{ name: "Movies", icon: require("@/assets/icons/movies.svg"), id: "2" },
+				{ name: 'Movies', icon: require('@/assets/icons/movies.svg'), id: '2' },
 				{
-					name: "Games",
-					icon: require("@/assets/icons/game_controller.svg"),
-					id: "3",
+					name: 'Games',
+					icon: require('@/assets/icons/game_controller.svg'),
+					id: '3',
 				},
 				{
-					name: "More",
-					icon: require("@/assets/icons/four_circles.svg"),
-					id: "4",
+					name: 'More',
+					icon: require('@/assets/icons/four_circles.svg'),
+					id: '4',
 				},
 			],
 			dateFormat: {
@@ -167,26 +167,25 @@ export default Vue.extend({
 
 	methods: {
 		openKycForm() {
-			this.wantsToFillKycForm = true;
+			this.wantsToFillKycForm = true
 		},
 		closeKycForm() {
-			this.wantsToFillKycForm = false;
+			this.wantsToFillKycForm = false
 		},
 		openRequestTransferForm() {
-			this.wantsToRequestTransfer = true;
+			this.wantsToRequestTransfer = true
 		},
 		closeRequestTransferForm() {
-			this.wantsToRequestTransfer = false;
+			this.wantsToRequestTransfer = false
 		},
 		toggleAbilityToViewBalance() {
-			this.canViewBalance = !this.canViewBalance;
-		}
+			this.canViewBalance = !this.canViewBalance
+		},
 	},
 
 	mounted() {
-		const userInfo = localStorage.getItem('user-info');
-		console.log(userInfo)
-
+		const userInfo = localStorage.getItem('user-info')
+		// console.log(userInfo)
 	},
 })
 </script>
@@ -270,7 +269,7 @@ export default Vue.extend({
 		}
 
 		.ec-balance-wrapper {
-			>div {
+			> div {
 				display: flex;
 				align-items: center;
 				gap: 16px;
@@ -452,7 +451,7 @@ export default Vue.extend({
 						background: #1f1e34;
 						border-radius: 14px;
 
-						>div {
+						> div {
 							display: flex;
 							gap: 10px;
 							font-size: 14px;

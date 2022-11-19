@@ -52,7 +52,7 @@ export default Vue.extend({
 
 	computed: {
 		fullname: function () {
-			return this.user.user.firstName + ' ' + this.user.user.lastName
+			return this.user.firstName + ' ' + this.user.lastName
 		},
 		initials: function () {
 			return this.fullname[0].toUpperCase()
@@ -69,8 +69,8 @@ export default Vue.extend({
 	},
 
 	beforeMount() {
-		let userInfo = localStorage.getItem('user-info');
-		this.user = JSON.parse(userInfo);
+		let userInfo = localStorage.getItem('user-info')
+		this.user = JSON.parse(userInfo)
 	},
 })
 </script>

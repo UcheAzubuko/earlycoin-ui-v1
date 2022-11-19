@@ -15,8 +15,13 @@
 
 			<div class="form-input-group">
 				<label for="register-dob">Date Of Birth</label>
-				<date-picker class="date-picker" v-model="dob" type="date" format="DD/MM/YYYY"
-					placeholder="Your date of birth"></date-picker>
+				<date-picker
+					class="date-picker"
+					v-model="dob"
+					type="date"
+					format="DD/MM/YYYY"
+					placeholder="Your date of birth"
+				></date-picker>
 			</div>
 
 			<div class="form-input-group">
@@ -26,8 +31,15 @@
 
 			<div class="form-input-group">
 				<label for="register-password">Password</label>
-				<input id="register-password" v-model="password" placeholder="Your password" type="password"
-					autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" />
+				<input
+					id="register-password"
+					v-model="password"
+					placeholder="Your password"
+					type="password"
+					autocomplete="false"
+					readonly
+					onfocus="this.removeAttribute('readonly');"
+				/>
 			</div>
 
 			<div class="form-checkbox-group">
@@ -35,8 +47,7 @@
 				<label for="register-terms">I have agreed to the terms and condition</label>
 			</div>
 
-			<ButtonGeneric @click="createUser" class="register-btn" :btn-text="'Create Account'"
-				:disabled="isDisabled" />
+			<ButtonGeneric @click="createUser" class="register-btn" :btn-text="'Create Account'" :disabled="isDisabled" />
 		</form>
 	</div>
 </template>
@@ -98,7 +109,7 @@ export default {
 	align-items: flex-start;
 }
 
-.register-form--container>h2 {
+.register-form--container > h2 {
 	font-family: 'Rubik';
 	font-style: normal;
 	font-weight: 700;
@@ -129,7 +140,7 @@ export default {
 	margin-bottom: 24px;
 }
 
-.form-input-group>label {
+.form-input-group > label {
 	font-family: 'Sen';
 	font-style: normal;
 	font-weight: 400;
@@ -139,7 +150,7 @@ export default {
 	color: #000000;
 }
 
-.form-input-group>input {
+.form-input-group > input {
 	height: 28px;
 	width: 100%;
 	font-family: 'Sen';
@@ -155,11 +166,11 @@ export default {
 	border: none;
 }
 
-.form-input-group>.date-picker {
+.form-input-group > .date-picker {
 	width: 100%;
 }
 
-.form-input-group>.date-picker>.mx-input-wrapper>input {
+.form-input-group > .date-picker > .mx-input-wrapper > input {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	border: none;
@@ -186,7 +197,7 @@ export default {
 	margin: 10px 0 34px;
 }
 
-.form-checkbox-group>label {
+.form-checkbox-group > label {
 	margin-left: 10px;
 	font-family: 'Sen';
 	font-style: normal;
@@ -207,7 +218,7 @@ export default {
 		align-items: center;
 	}
 
-	.register-form--container>h2 {
+	.register-form--container > h2 {
 		font-size: 20px;
 		line-height: 36px;
 		text-align: center;
@@ -215,7 +226,19 @@ export default {
 		margin-bottom: 14px;
 	}
 
-	.form-input-group>.date-picker>.mx-input-wrapper>input {
+	.form-input-group > label {
+		font-size: 1.2rem;
+		color: #ffffff;
+	}
+
+	.form-input-group > input {
+		height: 20px;
+		font-size: 1.6rem;
+		margin-top: 6px;
+		color: #ffffff;
+	}
+
+	.form-input-group > .date-picker > .mx-input-wrapper > input {
 		height: 20px;
 		font-size: 1.6rem;
 		margin-top: 6px;
@@ -226,7 +249,7 @@ export default {
 		margin: 16px 0 58px;
 	}
 
-	.form-checkbox-group>label {
+	.form-checkbox-group > label {
 		margin-left: 8px;
 		font-size: 1.2rem;
 		color: #ffffff;

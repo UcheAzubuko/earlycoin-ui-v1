@@ -10,8 +10,15 @@
 
 			<div class="form-input-group">
 				<label for="login-password">Password</label>
-				<input id="login-password" v-model="password" placeholder="Your password" type="password"
-					autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" />
+				<input
+					id="login-password"
+					v-model="password"
+					placeholder="Your password"
+					type="password"
+					autocomplete="false"
+					readonly
+					onfocus="this.removeAttribute('readonly');"
+				/>
 			</div>
 			<span class="login-form--forgot-password">Forgot password</span>
 
@@ -52,7 +59,7 @@ export default {
 			this.loading = true
 			try {
 				let res = await login(this.email, this.password)
-				console.log(res)
+				// console.log(res)
 				this.loading = false
 
 				// 1. save token to localStorage
@@ -85,7 +92,7 @@ export default {
 	align-items: center;
 }
 
-.login-form--container>h2 {
+.login-form--container > h2 {
 	font-family: 'Rubik';
 	font-style: normal;
 	font-weight: 700;
@@ -116,7 +123,7 @@ export default {
 	margin-bottom: 24px;
 }
 
-.form-input-group>label {
+.form-input-group > label {
 	font-family: 'Sen';
 	font-style: normal;
 	font-weight: 400;
@@ -126,7 +133,7 @@ export default {
 	color: #000000;
 }
 
-.form-input-group>input {
+.form-input-group > input {
 	height: 28px;
 	width: 100%;
 	font-family: 'Sen';
@@ -158,9 +165,9 @@ export default {
 	margin: 0 auto;
 }
 
-.login-form--container>a,
-.login-form--container>a:active,
-.login-form--container>a:focus {
+.login-form--container > a,
+.login-form--container > a:active,
+.login-form--container > a:focus {
 	font-family: 'Rubik';
 	text-decoration: none;
 	margin-top: 6.5rem;
@@ -186,7 +193,7 @@ export default {
 		align-items: center;
 	}
 
-	.login-form--container>h2 {
+	.login-form--container > h2 {
 		font-size: 20px;
 		line-height: 36px;
 		text-align: center;
@@ -203,20 +210,21 @@ export default {
 		margin-bottom: 18px;
 	}
 
-	.form-input-group>label {
+	.form-input-group > label {
 		font-size: 1.2rem;
+		color: #ffffff;
 	}
 
-	.form-input-group>input {
+	.form-input-group > input {
 		height: 20px;
 		font-size: 1.6rem;
 		margin-top: 6px;
 		color: #ffffff;
 	}
 
-	.login-form--container>a,
-	.login-form--container>a:active,
-	.login-form--container>a:focus {
+	.login-form--container > a,
+	.login-form--container > a:active,
+	.login-form--container > a:focus {
 		margin-top: 2.4rem;
 		font-size: 1.4rem;
 		color: #ffffff;
