@@ -47,7 +47,13 @@
 				<label for="register-terms">I have agreed to the terms and condition</label>
 			</div>
 
-			<ButtonGeneric @click="createUser" class="register-btn" :btn-text="'Create Account'" :disabled="isDisabled" />
+			<ButtonGeneric
+				:loading="loading"
+				@click="createUser"
+				class="register-btn"
+				:btn-text="'Create Account'"
+				:disabled="isDisabled"
+			/>
 		</form>
 	</div>
 </template>
@@ -71,6 +77,7 @@ export default {
 			password: '',
 			agreedToTerms: false,
 			// isDisabled: false,
+			loading: false,
 		}
 	},
 
@@ -89,13 +96,23 @@ export default {
 
 	methods: {
 		async createUser() {
-			// console.log('form here')
-			let res = await register(this.name, this.email, this.phoneNumber, this.password)
+			this.loading = true
+			try {
+				let res = await register(this.name, this.email, this.phoneNumber, this.password)
+				this.loading = false
 
-			localStorage.setItem('local', res.data.credentials.accessToken)
-			localStorage.setItem('user-info', JSON.stringify(res.data.credentials.user))
-			this.$router.push('/')
-			// console.log(res)
+				console.log(res)
+
+				localStorage.setItem('local', res.data.confirmToken)
+				localStorage.setItem('user-info', JSON.stringify(res.data.user))
+
+				this.$store.commit('SET_LISTATE', true)
+				this.$router.push('/')
+			} catch (error) {
+				console.log(error)
+
+				this.loading = false
+			}
 		},
 	},
 }
