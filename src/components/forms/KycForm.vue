@@ -9,7 +9,7 @@
 			</span>
 			<h1>KYC Form</h1>
 		</div>
-		<form method="post" @submit.prevent="submitKyc" class="kyc-form" autocomplete="off">
+		<form @submit.prevent="submitKyc" class="kyc-form">
 			<div class="form-input-group">
 				<label for="employerDetails">Employer details</label>
 				<input id="employerDetails" v-model="employerDetails" placeholder="Joseph" type="text" />
@@ -22,20 +22,22 @@
 
 			<div class="form-input-group">
 				<label for="monthlyIncome">Monthly income</label>
-				<input id="monthlyIncome" v-model="monthlyIncome" placeholder="N400000" type="text" />
+				<input id="monthlyIncome" v-model="monthlyIncome" placeholder="400000" type="text" />
 			</div>
 
 			<div class="form-input-group">
 				<label for="bvn">BVN</label>
 				<input id="bvn" v-model="bvn" type="text" />
 			</div>
-			<ButtonGeneric :loading="isLoading" class="kyc-btn" :btn-text="'Click to verify'" :disabled="isDisabled" />
+			<ButtonGeneric @click="submitKyc" :loading="isLoading" class="kyc-btn" :btn-text="'Click to verify'"
+				:disabled="isDisabled" />
 		</form>
 	</div>
 </template>
 
 <script>
 import ButtonGeneric from '@/components/general/ButtonGeneric.vue'
+import axios from 'axios'
 
 export default {
 	name: 'KycForm',
@@ -50,12 +52,31 @@ export default {
 			monthlyIncome: '',
 			bvn: '',
 			isDisabled: true,
+			user: {}
 		}
 	},
 
 	methods: {
 		submitKyc() {
-			return null
+			console.log('2')
+			axios.post(
+				'https://sandbox-api.oneliquidity.technology/compliance/v1/gov/ng/bvn',
+				{ bvn: '727828773993', lastName: this.user.user.lastName, firstName: this.user.user.firstName, verificationId: "bb269e06-2bb8-43ab-9f1d-4da5694a78d4" },
+				{ headers: {} }
+			)
+				.then(function (response) {
+					console.log(response);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+
+			// const res = axios.post(
+			// 	'https://earlycoin.herokuapp.com/api/v1/auth/signup',
+			// 	{ employerDetails: name, lastName: name, email: email, password: password, phoneNumber: phoneNumber, confirmPassword: password },
+			// 	{ headers: {} }
+			// )
+			// console.log(bvnRes)
 		},
 		closeKycForm() {
 			this.$emit('close')
@@ -64,6 +85,11 @@ export default {
 
 	mounted() {
 		window.scrollTo({ top: 0, behavior: "smooth" });
+	},
+
+	beforeMount() {
+		let userInfo = localStorage.getItem('user-info');
+		this.user = JSON.parse(userInfo);
 	},
 }
 </script>

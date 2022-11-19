@@ -182,11 +182,6 @@ export default Vue.extend({
 			this.canViewBalance = !this.canViewBalance
 		},
 	},
-
-	mounted() {
-		const userInfo = localStorage.getItem('user-info')
-		// console.log(userInfo)
-	},
 })
 </script>
 
@@ -269,7 +264,7 @@ export default Vue.extend({
 		}
 
 		.ec-balance-wrapper {
-			> div {
+			>div {
 				display: flex;
 				align-items: center;
 				gap: 16px;
@@ -451,7 +446,7 @@ export default Vue.extend({
 						background: #1f1e34;
 						border-radius: 14px;
 
-						> div {
+						>div {
 							display: flex;
 							gap: 10px;
 							font-size: 14px;
