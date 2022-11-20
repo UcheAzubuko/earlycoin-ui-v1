@@ -289,10 +289,10 @@ export default {
 	.register-form--container {
 		width: 320px;
 		align-items: center;
+	}
 
-		span.caution {
-			color: #fff;
-		}
+	span.caution {
+		color: #fff;
 	}
 }
 </style>
