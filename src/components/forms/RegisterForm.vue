@@ -23,6 +23,7 @@
 			<div class="form-input-group">
 				<label for="register-phoneNumber">Phone number</label>
 				<input id="register-phoneNumber" v-model="phoneNumber" placeholder="Your phoneNumber" type="text" />
+				<span class="caution">e.g. 08121432121</span>
 			</div>
 
 			<div class="form-input-group">
