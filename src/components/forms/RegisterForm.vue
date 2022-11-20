@@ -145,9 +145,14 @@ export default {
 	margin-bottom: 24px;
 
 	span.caution {
+		margin-top: 3px;
 		font-size: 13px;
 		color: #000;
 		display: block;
+
+		@media screen and (max-width: 769px) {
+			color: #fff;
+		}
 	}
 }
 
