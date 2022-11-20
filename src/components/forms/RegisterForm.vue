@@ -4,9 +4,9 @@
 
 		<form method="post" @submit.prevent="createUser" class="register-form" autocomplete="off">
 			<div class="form-input-group">
-				<label for="register-name">Name</label>
+				<label for="register-name">Username</label>
 				<input id="register-name" v-model="name" placeholder="Your name" type="text" />
-				<span class="caution">Must begin with uppercase</span>
+				<span class="caution">Must begin with uppercase and have no space</span>
 			</div>
 
 			<div class="form-input-group">
@@ -289,6 +289,10 @@ export default {
 	.register-form--container {
 		width: 320px;
 		align-items: center;
+
+		span.caution {
+			color: #fff;
+		}
 	}
 }
 </style>
