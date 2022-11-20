@@ -5,7 +5,7 @@
 		<form method="post" @submit.prevent="createUser" class="register-form" autocomplete="off">
 			<div class="form-input-group">
 				<label for="register-name">Username</label>
-				<input id="register-name" v-model="name" placeholder="Your name" type="text" />
+				<input id="register-name" v-model="name" placeholder="Your username" type="text" />
 				<span class="caution">Must begin with uppercase and have no space</span>
 			</div>
 
